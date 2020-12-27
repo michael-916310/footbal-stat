@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/footbal-stat%08uild/static/css/main.be51834a.chunk.css",
-    "main.js": "/footbal-stat%08uild/static/js/main.a9550b9e.chunk.js",
-    "main.js.map": "/footbal-stat%08uild/static/js/main.a9550b9e.chunk.js.map",
-    "runtime-main.js": "/footbal-stat%08uild/static/js/runtime-main.a71cc3aa.js",
-    "runtime-main.js.map": "/footbal-stat%08uild/static/js/runtime-main.a71cc3aa.js.map",
-    "static/js/2.a99054a5.chunk.js": "/footbal-stat%08uild/static/js/2.a99054a5.chunk.js",
-    "static/js/2.a99054a5.chunk.js.map": "/footbal-stat%08uild/static/js/2.a99054a5.chunk.js.map",
-    "index.html": "/footbal-stat%08uild/index.html",
-    "static/css/main.be51834a.chunk.css.map": "/footbal-stat%08uild/static/css/main.be51834a.chunk.css.map",
-    "static/js/2.a99054a5.chunk.js.LICENSE.txt": "/footbal-stat%08uild/static/js/2.a99054a5.chunk.js.LICENSE.txt",
-    "static/media/logo.db36153e.svg": "/footbal-stat%08uild/static/media/logo.db36153e.svg"
+    "main.css": "/footbal-stat/build/static/css/main.be51834a.chunk.css",
+    "main.js": "/footbal-stat/build/static/js/main.377dde38.chunk.js",
+    "main.js.map": "/footbal-stat/build/static/js/main.377dde38.chunk.js.map",
+    "runtime-main.js": "/footbal-stat/build/static/js/runtime-main.3ab6ef1a.js",
+    "runtime-main.js.map": "/footbal-stat/build/static/js/runtime-main.3ab6ef1a.js.map",
+    "static/js/2.a99054a5.chunk.js": "/footbal-stat/build/static/js/2.a99054a5.chunk.js",
+    "static/js/2.a99054a5.chunk.js.map": "/footbal-stat/build/static/js/2.a99054a5.chunk.js.map",
+    "index.html": "/footbal-stat/build/index.html",
+    "static/css/main.be51834a.chunk.css.map": "/footbal-stat/build/static/css/main.be51834a.chunk.css.map",
+    "static/js/2.a99054a5.chunk.js.LICENSE.txt": "/footbal-stat/build/static/js/2.a99054a5.chunk.js.LICENSE.txt",
+    "static/media/logo.db36153e.svg": "/footbal-stat/build/static/media/logo.db36153e.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.a71cc3aa.js",
+    "static/js/runtime-main.3ab6ef1a.js",
     "static/js/2.a99054a5.chunk.js",
     "static/css/main.be51834a.chunk.css",
-    "static/js/main.a9550b9e.chunk.js"
+    "static/js/main.377dde38.chunk.js"
   ]
 }
