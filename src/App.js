@@ -2,6 +2,8 @@ import React from 'react';
 import GameContainer from './features/gameContainer/GameContainer';
 
 import { Counter } from './features/counter/Counter';
+
+import 'normalize.css';
 import './App.css';
 
 function App() {

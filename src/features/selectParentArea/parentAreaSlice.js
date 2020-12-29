@@ -9,7 +9,6 @@ export const parentAreaSlice = createSlice({
   },
   reducers: {
     setList: (state, action)=>{
-      console.log('setList', action);
       state.list = action.payload;
     },
   },
@@ -19,8 +18,6 @@ export const {setList } = parentAreaSlice.actions;
 
 export const parentAreaFetched = data => dispatch => {
   const m = new Map();
-
-  console.log(`started: parentAreaFetched`);
 
   data.areas.map((item)=>{
     return {
@@ -39,7 +36,7 @@ export const parentAreaFetched = data => dispatch => {
 
 export const selectedId = state => state.parentArea.id;
 export const selectedName = state => state.parentArea.name;
-export const listToSelect = state => state.parentArea.list;
+export const fullListToSelect = state => state.parentArea.list;
 
 
 export default parentAreaSlice.reducer;

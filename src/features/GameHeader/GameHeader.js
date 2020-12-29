@@ -8,10 +8,8 @@ import './GameHeader.scss';
 export default function GameHeader(){
 
   return (
-    <section>
-      <div>
-        <SelectParentArea/>
-      </div>
+    <section className="game-header-container">
+      <SelectParentArea/>
     </section>
   )
 }

@@ -1,0 +1,32 @@
+.select-parent-area__container {
+  width: 300px;
+  padding: 0 5px;
+
+  background-color: lightgray;
+}
+
+.select-parent-area__line {
+  display: flex;
+  height: 24px;
+}
+.select-parent-area__input {
+  text-align: left;
+  width: calc(100% - 24px);
+  height: 24px;
+}
+
+.select-parent-area__down-arrow {
+  padding: 0;
+  width: 24px;
+  height: 24px;
+}
+
+.select-parent-area__down-arrow-img {
+  justify-content: center;
+  align-items: center;
+  object-fit: cover;
+}
+
+.select-parent-area__list {
+  text-align: left;
+}
