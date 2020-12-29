@@ -15,7 +15,7 @@ export default function GameHeader(){
     fetchGameArea((data)=>{
       dispatch(parentAreaFetched(data));
     });
-  }, [])
+  }, []);
 
   return (
     <section>

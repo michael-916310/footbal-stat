@@ -5,6 +5,7 @@ export const parentAreaSlice = createSlice({
   initialState: {
     id: 0,
     name: '',
+    list:[],
   },
   reducers: {
     increment: state => {
@@ -46,7 +47,7 @@ export const parentAreaFetched = data => dispatch => {
       name: item.parentArea,
     }
   }).forEach(el => {
-    if (! m.has(el.id)) {
+    if (!m.has(el.id) && el.id) {
       m.set(el.id, {...el});
     }
   });
