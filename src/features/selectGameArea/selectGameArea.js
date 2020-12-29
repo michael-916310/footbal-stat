@@ -12,7 +12,14 @@ export default function SelectGameArea(props){
 
   return (
     <React.Fragment>
-      <input type="text" className="select-component__view-value" placeholder="select parent area" value={viewValue} onChange={handleViewValueChange}/>
+      <input
+        type="text"
+        className="select-component__view-value"
+        placeholder="select parent area"
+        value={viewValue}
+        onChange={handleViewValueChange}
+      />
+
       {
       (viewValue &&
         <div>
