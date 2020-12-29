@@ -1,14 +1,27 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import {selectId, selectName} from './parentAreaSlice';
+import {parentAreaFetched} from '../selectParentArea/parentAreaSlice';
+import {fetchGameArea} from '../../app/api';
+
+import {selectedId, selectedName, listToSelect} from './parentAreaSlice';
+
 
 export default function SelectParentArea(props){
 
   let [viewValue, setViewValue] = useState('');
 
-  const areaId = useSelector(selectId);
-  const areaName = useSelector(selectName);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    fetchGameArea((data)=>{
+      dispatch(parentAreaFetched(data));
+    });
+  }, []);
+
+  const areaId = useSelector(selectedId);
+  const areaName = useSelector(selectedName);
+  const list = useSelector(listToSelect);
 
 
   function handleViewValueChange(e){
@@ -25,19 +38,19 @@ export default function SelectParentArea(props){
         value={viewValue}
         onChange={handleViewValueChange}
       />
-      {`areaId:<${areaId}>`}
-      {`areaName:<${areaName}>`}
-      {
-      (viewValue &&
-        <div>
+      {(list &&
           <div>
-            <label><input name="selectValue" type="radio"/>описание 1</label>
+            {
+              list.map(el => {
+                return (
+                  <div>
+                    <label><input name="selectValue" type="radio"/>{el.name}</label>
+                  </div>
+                )
+              })
+            }
           </div>
-          <div>
-            <label><input name="selectValue" type="radio"/>описание 2</label>
-          </div>
-      </div>)
-      }
+      )}
     </React.Fragment>
   )
 }
