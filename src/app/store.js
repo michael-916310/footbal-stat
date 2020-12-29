@@ -1,10 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import counterReducer from '../features/counter/counterSlice';
-import gameAreaSliceReducer from '../features/selectGameArea/gameAreaSlice';
+import parentAreaReducer from '../features/selectParentArea/parentAreaSlice';
 
 export default configureStore({
   reducer: {
     counter: counterReducer,
-    gameArea: gameAreaSliceReducer,
+    parentArea: parentAreaReducer,
   },
 });
+

@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import {selectId, selectName} from './gameAreaSlice';
+import {selectId, selectName} from './parentAreaSlice';
 
-export default function SelectGameArea(props){
+export default function SelectParentArea(props){
 
   let [viewValue, setViewValue] = useState('');
 

@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-export const gameAreaSlice = createSlice({
-  name: 'gameArea',
+export const parentAreaSlice = createSlice({
+  name: 'parentArea',
   initialState: {
     id: 0,
     name: '',
@@ -23,7 +23,7 @@ export const gameAreaSlice = createSlice({
   },
 });
 
-export const { increment, decrement, incrementByAmount } = gameAreaSlice.actions;
+export const { increment, decrement, incrementByAmount } = parentAreaSlice.actions;
 
 // The function below is called a thunk and allows us to perform async logic. It
 // can be dispatched like a regular action: `dispatch(incrementAsync(10))`. This
@@ -35,12 +35,27 @@ export const incrementAsync = amount => dispatch => {
   }, 1000);
 };
 
-// The function below is called a selector and allows us to select a value from
-// the state. Selectors can also be defined inline where they're used instead of
-// in the slice file. For example: `useSelector((state) => state.counter.value)`
-export const selectCount = state => state.counter.value;
+export const parentAreaFetched = data => dispatch => {
+  const m = new Map();
 
-export const selectId = state => state.gameArea.id;
-export const selectName = state => state.gameArea.name;
+  console.log(`started: parentAreaFetched`);
 
-export default gameAreaSlice.reducer;
+  data.areas.map((item)=>{
+    return {
+      id: item.parentAreaId,
+      name: item.parentArea,
+    }
+  }).forEach(el => {
+    if (! m.has(el.id)) {
+      m.set(el.id, {...el});
+    }
+  });
+
+  const list = [...m.values()];
+  console.log(list);
+};
+
+export const selectId = state => state.parentArea.id;
+export const selectName = state => state.parentArea.name;
+
+export default parentAreaSlice.reducer;
