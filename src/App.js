@@ -1,5 +1,5 @@
 import React from 'react';
-import GameContainer from './features/GameContainer/GameContainer';
+import GameContainer from './features/gameContainer/GameContainer';
 {/*
 import logo from './logo.svg';
 import { Counter } from './features/counter/Counter';

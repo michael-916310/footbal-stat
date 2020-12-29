@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import GameHeader from '../GameHeader/GameHeader';
+import GameHeader from '../gameHeader/GameHeader';
 
 export default function GameContainer(props){
   return (
