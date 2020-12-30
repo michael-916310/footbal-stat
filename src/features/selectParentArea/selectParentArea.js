@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import {parentAreaFetched} from './parentAreaSlice';
+import {parentAreaFetched, setId, setName} from './parentAreaSlice';
+
 import {fetchGameArea} from '../../app/api';
 
 import {selectedId, selectedName, fullListToSelect} from './parentAreaSlice';
@@ -31,6 +32,8 @@ export default function SelectParentArea(props){
     fetchGameArea((data)=>{
       dispatch(parentAreaFetched(data));
     });
+    // запишем в viewValue текущее значение из сторе
+    setViewValue(areaName);
   }, []);
 
   function handleViewValueChange(e){
@@ -54,7 +57,26 @@ export default function SelectParentArea(props){
     }
   }
 
+
+  function setParentArea(id, name){
+    dispatch(setId(id));
+    dispatch(setName(name));
+    setViewValue(name);
+    setIsListOpen(false);
+  }
+
+  function handleSelectValue(id, name){
+    if (listToSelect.length === 1) {
+      setParentArea(listToSelect[0].id, listToSelect[0].name);
+    } else if (id && name) {
+      setParentArea(id, name);
+    }
+  }
+
   function handleOnKeyDown(e){
+    if (!viewValue) {
+      setListToSelect(parentArealist);
+    }
     if (e.key==='ArrowDown') {
       // отобразим список
       setIsListOpen(true);
@@ -63,6 +85,10 @@ export default function SelectParentArea(props){
       // скроем список
       setIsListOpen(false);
     }
+    if (e.code==='Enter') {
+      handleSelectValue();
+    }
+
   }
 
   return (
@@ -97,7 +123,11 @@ export default function SelectParentArea(props){
             {
               listToSelect.map(el => {
                 return (
-                  <div key={el.id} className="select-parent-area__item">
+                  <div
+                    key={el.id}
+                    className="select-parent-area__item"
+                    onClick={()=>{handleSelectValue(el.id, el.name)}}
+                  >
                     {el.name}
                   </div>
                 )

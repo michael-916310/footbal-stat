@@ -11,10 +11,16 @@ export const parentAreaSlice = createSlice({
     setList: (state, action)=>{
       state.list = action.payload;
     },
+    setId: (state, action)=>{
+      state.id = action.payload;
+    },
+    setName: (state, action)=>{
+      state.name = action.payload;
+    }
   },
 });
 
-export const { setList } = parentAreaSlice.actions;
+export const { setList, setId, setName } = parentAreaSlice.actions;
 
 export const parentAreaFetched = data => dispatch => {
   const m = new Map();
