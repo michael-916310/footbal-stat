@@ -32,9 +32,13 @@ export default function SelectParentArea(props){
     fetchGameArea((data)=>{
       dispatch(parentAreaFetched(data));
     });
-    // запишем в viewValue текущее значение из сторе
-    setViewValue(areaName);
   }, []);
+
+  useEffect(() => {
+    // запишем в viewValue текущее значение из стора
+    setViewValue(areaName);
+  }, [areaName, areaId]);
+
 
   function handleViewValueChange(e){
     const v = e.target.value;
@@ -57,11 +61,14 @@ export default function SelectParentArea(props){
     }
   }
 
+  function handleClearClick(){
+    dispatch(setId(0));
+    dispatch(setName(''));
+  }
 
   function setParentArea(id, name){
     dispatch(setId(id));
     dispatch(setName(name));
-    setViewValue(name);
     setIsListOpen(false);
   }
 
@@ -114,6 +121,7 @@ export default function SelectParentArea(props){
           <img
             src={clear_png}
             alt="clear list"
+            onClick = {handleClearClick}
           />
         </button>
       </div>

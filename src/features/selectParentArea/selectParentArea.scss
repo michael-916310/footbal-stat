@@ -1,8 +1,8 @@
+@import '../../app/colors.scss';
+
 .select-parent-area__container {
   width: 300px;
   padding: 0 5px;
-
-  background-color: lightgray;
 }
 
 .select-parent-area__line {
@@ -13,6 +13,8 @@
   text-align: left;
   width: calc(100% - 24px - 24px);
   height: 24px;
+
+  color: $color-primary;
 }
 
 .select-parent-area__down-arrow-button,
@@ -24,8 +26,12 @@
 
 .select-parent-area__list {
   text-align: left;
+  background-color: $color-clouds;
 }
 
-.select-parent-area__item:hover {
-  background-color: lightcyan;
+.select-parent-area__item {
+  color: $color-secondary;
+  &:hover {
+    background-color: $color-silver;
+  }
 }
