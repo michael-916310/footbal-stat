@@ -11,22 +11,21 @@
 }
 .select-parent-area__input {
   text-align: left;
-  width: calc(100% - 24px);
+  width: calc(100% - 24px - 24px);
   height: 24px;
 }
 
-.select-parent-area__down-arrow {
+.select-parent-area__down-arrow-button,
+.select-parent-area__clear-arrow-button {
   padding: 0;
   width: 24px;
   height: 24px;
 }
 
-.select-parent-area__down-arrow-img {
-  justify-content: center;
-  align-items: center;
-  object-fit: cover;
-}
-
 .select-parent-area__list {
   text-align: left;
+}
+
+.select-parent-area__item:hover {
+  background-color: lightcyan;
 }

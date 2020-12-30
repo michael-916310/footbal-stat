@@ -14,7 +14,7 @@ export const parentAreaSlice = createSlice({
   },
 });
 
-export const {setList } = parentAreaSlice.actions;
+export const { setList } = parentAreaSlice.actions;
 
 export const parentAreaFetched = data => dispatch => {
   const m = new Map();
@@ -36,7 +36,9 @@ export const parentAreaFetched = data => dispatch => {
 
 export const selectedId = state => state.parentArea.id;
 export const selectedName = state => state.parentArea.name;
-export const fullListToSelect = state => state.parentArea.list;
+export const fullListToSelect = state => {
+  return state.parentArea.list;
+};
 
 
 export default parentAreaSlice.reducer;
