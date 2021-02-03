@@ -2,12 +2,12 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { tRootState } from './../../app/rootReducer';
 import { tAppDispatch } from './../../app/store';
 
-interface iParentAreaList {
+export interface iParentAreaList {
   id: number;
   name: string;
 }
 
-interface iParentArea {
+export interface iParentArea {
   id: number;
   name: string;
   list: Array<iParentAreaList>;

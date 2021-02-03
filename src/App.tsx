@@ -10,11 +10,11 @@ function App() {
   return (
     <div className="App">
       <GameContainer/>
-
+{/*
       <header className="App-header">
         <Counter />
-      </header>
-
+      </header>}
+*/}
     </div>
   );
 }

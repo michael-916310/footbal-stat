@@ -25,6 +25,9 @@
 }
 
 .select-parent-area__list {
+  position: absolute;
+  width: 242px;
+
   text-align: left;
   background-color: $color-clouds;
 }
@@ -34,4 +37,8 @@
   &:hover {
     background-color: $color-silver;
   }
+}
+
+.select-parent-area__item-current {
+  background-color: $color-silver;
 }

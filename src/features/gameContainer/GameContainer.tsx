@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import GameHeader from '../gameHeader/GameHeader';
 
-export default function GameContainer(props){
+export default function GameContainer(props: any){
   return (
     <div>
       <div>
