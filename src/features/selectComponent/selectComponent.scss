@@ -1,0 +1,64 @@
+@import '../../app/colors.scss';
+
+$PAHeight: 2rem;
+$PAButtonWidth: 2rem;
+$PAInputWidth: $PAButtonWidth * 6;
+$PAControllWidth: $PAButtonWidth * 8;
+
+.select-component__line {
+  display: flex;
+  height: $PAHeight;
+  width: $PAControllWidth;
+
+  margin: 0 5px;
+
+  &-warning {
+    outline: 1px dotted $color-warning;
+  }
+}
+.select-component__input {
+  text-align: left;
+
+  width: $PAInputWidth;
+  height: 100%;
+  padding: 5px;
+
+  color: $color-primary;
+
+  &-OK {
+    color: $color-success;
+  }
+}
+
+.select-component__down-arrow-button,
+.select-component__clear-arrow-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 0;
+  width: $PAButtonWidth;
+  height: 100%;
+}
+
+.select-component__list {
+  position: absolute;
+  width: $PAInputWidth;
+
+  margin: 0 5px;
+
+  text-align: left;
+  background-color: $color-clouds;
+}
+
+.select-component__item {
+  padding: 5px;
+  color: $color-secondary;
+  &:hover {
+    background-color: $color-silver;
+  }
+}
+
+.select-component__item-current {
+  background-color: $color-silver;
+}
