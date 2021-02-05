@@ -8,17 +8,14 @@ import clear_png from './../../img/clear20.png';
 
 export default function SelectComponent(props: any){
 
-  //let iListItem = props.iListItem;
   let selectedId = props.selectedId;
   let selectedName = props.selectedName;
   let fullListToSelect = props.fullListToSelect;
-  let setIdAction = props.setIdAction;
-  let setNameAction = props.setNameAction;
   let placeholder = props.placeholder;
+  let onSelectAreaAction = props.onSelectAreaAction;
 
   let [viewValue, setViewValue] = useState('');
   let [isListOpen, setIsListOpen] = useState(false);
-  //let [listToSelect, setListToSelect] = useState<iListItem[]>([]);
   let [listToSelect, setListToSelect] = useState([]);
   let [listKeyboardPosition, setListKeyboardPosition] = useState(0);
 
@@ -26,7 +23,6 @@ export default function SelectComponent(props: any){
 
   function filterListToSelect(value: string){
     // отфильтруем список
-    //const list: Array<iAreaList> = fullListToSelect.filter((el: any)=>{
     const list = fullListToSelect.filter((el: any)=>{
       return el.name.toUpperCase().includes(value.toUpperCase());
     });
@@ -41,8 +37,7 @@ export default function SelectComponent(props: any){
     filterListToSelect(v);
     setIsListOpen(true);
 
-    dispatch(setIdAction(0));
-    dispatch(setNameAction(''));
+    dispatch(onSelectAreaAction({ id:0, name:'' }));
   }
 
   function handleOpenClick(){
@@ -51,15 +46,13 @@ export default function SelectComponent(props: any){
   }
 
   function handleClearClick(){
-    dispatch(setIdAction(0));
-    dispatch(setNameAction(''));
+    dispatch(onSelectAreaAction({ id:0, name:'' }));
     filterListToSelect('');
     setViewValue('');
   }
 
   function setParentArea(id: number, name: string){
-    dispatch(setIdAction(id));
-    dispatch(setNameAction(name));
+    dispatch(onSelectAreaAction({ id, name }));
     setViewValue(name);
     setIsListOpen(false);
   }

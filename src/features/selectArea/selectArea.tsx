@@ -1,8 +1,8 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import {areaFetched, setId, setName} from './selectAreaSlice';
-import {selectedId, selectedName, fullListToSelect} from './selectAreaSlice';
+import {onAreaFetched as onAreaFetchedAction, onSelectArea as onSelectAreaAction} from './selectAreaSlice';
+import {getFullListToSelect, getSelectedArea} from './selectAreaSlice';
 
 import SelectComponent from '../selectComponent/selectComponent';
 import {fetchGameArea} from '../../app/api';
@@ -11,28 +11,22 @@ export default function SelectArea(props: any){
 
   const dispatch = useDispatch();
 
-  // Возьмем что нужно из стейта редакса
-  const areaId = useSelector(selectedId);
-  const areaName = useSelector(selectedName);
-  const fullAreaListToSelect = useSelector(fullListToSelect);
+  const {id, name} = useSelector(getSelectedArea);
+  const fullAreaListToSelect = useSelector(getFullListToSelect);
 
-  /* ------------------------------------------
-  загрузим при монтировании список регионов
-  ------------------------------------------ */
   useEffect(() => {
     // выберем данные из апи
     fetchGameArea((data: any)=>{
-      dispatch(areaFetched(data));
+      dispatch(onAreaFetchedAction(data));
     });
   }, []);
 
   return (
     <SelectComponent
-      selectedId={areaId}
-      selectedName={areaName}
+      selectedId={id}
+      selectedName={name}
       fullListToSelect={fullAreaListToSelect}
-      setIdAction = {setId}
-      setNameAction = {setName}
+      onSelectAreaAction = {onSelectAreaAction}
       placeholder = {"select area"}
     />
   )
