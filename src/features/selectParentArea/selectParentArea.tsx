@@ -34,10 +34,10 @@ export default function SelectParentArea(props: any){
     });
   }, []);
 
-  useEffect(() => {
-    // запишем в viewValue текущее значение из стора
-    setViewValue(areaName);
-  }, [areaName, areaId]);
+  // useEffect(() => {
+  //   // запишем в viewValue текущее значение из стора
+  //   setViewValue(areaName);
+  // }, [areaName, areaId]);
 
   function filterListToSelect(value: string){
     // отфильтруем список
@@ -54,6 +54,11 @@ export default function SelectParentArea(props: any){
 
     filterListToSelect(v);
     setIsListOpen(true);
+
+    dispatch(setId(0));
+    dispatch(setName(''));
+
+    console.log('handleViewValueChange');
   }
 
   function handleOpenClick(){
@@ -65,6 +70,7 @@ export default function SelectParentArea(props: any){
     dispatch(setId(0));
     dispatch(setName(''));
     filterListToSelect('');
+    setViewValue('');
   }
 
   function setParentArea(id: number, name: string){
@@ -84,12 +90,9 @@ export default function SelectParentArea(props: any){
   }
 
   function handleOnKeyDown(e: any){
-    if (!viewValue) {
-      setListToSelect(parentArealist);
-    }
     if (e.key==='ArrowDown') {
       if (isListOpen) {
-        // сдивнем вниз "курсор"
+        // изменим позицию "курсора"
         setListKeyboardPosition((listKeyboardPosition<(listToSelect.length-1))?++listKeyboardPosition: listKeyboardPosition);
       } else {
         // отобразим список
@@ -102,10 +105,10 @@ export default function SelectParentArea(props: any){
       setIsListOpen(false);
     }
     if (e.code==='ArrowUp') {
-      // скроем список
+      // изменим позицию "курсора"
       setListKeyboardPosition((listKeyboardPosition>=1) ? --listKeyboardPosition : 0);
     }
-    if (e.code==='Enter') {
+    if ((e.code==='Enter') || (e.code==='Tab')) {
       handleSelectValue();
     }
 
@@ -125,13 +128,17 @@ export default function SelectParentArea(props: any){
 
   let classInputList = "select-parent-area__input";
   if (viewValue === areaName) {
-    classInputList = classInputList + ' ';
+    classInputList = classInputList + ' select-parent-area__input-OK';
+  }
+
+  let classLineList = "select-parent-area__line";
+  if (areaId === 0) {
+    classLineList = classLineList + ' select-parent-area__line-warning'
   }
 
   return (
-    <article className="select-parent-area__container">
-
-      <div className="select-parent-area__line">
+    <React.Fragment>
+      <div className={classLineList}>
         <input
           type="text"
           className={classInputList}
@@ -181,6 +188,6 @@ export default function SelectParentArea(props: any){
             }
           </div>
       )}
-    </article>
+    </React.Fragment>
   )
 }

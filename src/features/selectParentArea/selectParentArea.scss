@@ -1,38 +1,54 @@
 @import '../../app/colors.scss';
 
-.select-parent-area__container {
-  width: 300px;
-  padding: 0 5px;
-}
+$PAHeight: 2rem;
+$PAButtonWidth: 2rem;
+$PAInputWidth: $PAButtonWidth * 6;
+$PAControllWidth: $PAButtonWidth * 8;
 
 .select-parent-area__line {
   display: flex;
-  height: 24px;
+  height: $PAHeight;
+  width: $PAControllWidth;
+
+  &-warning {
+    outline: 1px dotted $color-warning;
+  }
 }
 .select-parent-area__input {
   text-align: left;
-  width: calc(100% - 24px - 24px);
-  height: 24px;
+
+  width: $PAInputWidth;
+  height: 100%;
+  padding: 5px;
 
   color: $color-primary;
+
+  &-OK {
+    color: $color-success;
+  }
 }
 
 .select-parent-area__down-arrow-button,
 .select-parent-area__clear-arrow-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   padding: 0;
-  width: 24px;
-  height: 24px;
+  width: $PAButtonWidth;
+  height: 100%;
 }
 
 .select-parent-area__list {
   position: absolute;
-  width: 242px;
+  width: $PAInputWidth;
 
   text-align: left;
   background-color: $color-clouds;
 }
 
 .select-parent-area__item {
+  padding: 5px;
   color: $color-secondary;
   &:hover {
     background-color: $color-silver;
