@@ -49,6 +49,7 @@ export default function SelectComponent(props: any){
     dispatch(onSelectAreaAction({ id:0, name:'' }));
     filterListToSelect('');
     setViewValue('');
+    setIsListOpen(false);
   }
 
   function setParentArea(id: number, name: string){
@@ -66,11 +67,21 @@ export default function SelectComponent(props: any){
     }
   }
 
+  function scrollList(){
+    if (list_ref.current != null) {
+      const el = list_ref.current.children[listKeyboardPosition];
+      if (el) {
+        el.scrollIntoView(false);
+      }
+    }
+  }
+
   function handleOnKeyDown(e: any){
     if (e.key==='ArrowDown') {
       if (isListOpen) {
         // изменим позицию "курсора"
         setListKeyboardPosition((listKeyboardPosition<(listToSelect.length-1))?++listKeyboardPosition: listKeyboardPosition);
+        scrollList();
       } else {
         // отобразим список
         filterListToSelect(viewValue);
@@ -84,6 +95,7 @@ export default function SelectComponent(props: any){
     if (e.code==='ArrowUp') {
       // изменим позицию "курсора"
       setListKeyboardPosition((listKeyboardPosition>=1) ? --listKeyboardPosition : 0);
+      scrollList();
     }
     if ((e.code==='Enter') || (e.code==='Tab')) {
       handleSelectValue();
@@ -113,11 +125,15 @@ export default function SelectComponent(props: any){
     classLineList = classLineList + ' select-component__line-warning'
   }
 
+  const input_ref:React.RefObject<HTMLInputElement> = React.createRef();
+  const list_ref:React.RefObject<HTMLInputElement> = React.createRef();
+
   return (
     <section>
       <div className={classLineList}>
         <input
           type="text"
+          ref = {input_ref}
           className={classInputList}
           placeholder={placeholder}
           value={viewValue}
@@ -145,7 +161,9 @@ export default function SelectComponent(props: any){
       </div>
 
       {(isListOpen &&
-          <div className="select-component__list">
+          <div
+            ref={list_ref}
+            className="select-component__list">
             {
               listToSelect.map((el: any, index: number) => {
                 let classNameList: string = "select-component__item";

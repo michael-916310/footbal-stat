@@ -1,14 +1,15 @@
 @import '../../app/colors.scss';
 
-$PAHeight: 2rem;
-$PAButtonWidth: 2rem;
-$PAInputWidth: $PAButtonWidth * 6;
-$PAControllWidth: $PAButtonWidth * 8;
+$SCHeight: 2rem;
+$SCButtonWidth: 2rem;
+$SCInputWidth: $SCButtonWidth * 6;
+$SCControllWidth: $SCButtonWidth * 8;
+$SCMaxListHeight: $SCHeight * 10;
 
 .select-component__line {
   display: flex;
-  height: $PAHeight;
-  width: $PAControllWidth;
+  height: $SCHeight;
+  width: $SCControllWidth;
 
   margin: 0 5px;
 
@@ -19,7 +20,7 @@ $PAControllWidth: $PAButtonWidth * 8;
 .select-component__input {
   text-align: left;
 
-  width: $PAInputWidth;
+  width: $SCInputWidth;
   height: 100%;
   padding: 5px;
 
@@ -37,13 +38,15 @@ $PAControllWidth: $PAButtonWidth * 8;
   align-items: center;
 
   padding: 0;
-  width: $PAButtonWidth;
+  width: $SCButtonWidth;
   height: 100%;
 }
 
 .select-component__list {
   position: absolute;
-  width: $PAInputWidth;
+  width: $SCInputWidth;
+  max-height: $SCMaxListHeight;
+  overflow: auto;
 
   margin: 0 5px;
 

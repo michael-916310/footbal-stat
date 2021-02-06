@@ -13,7 +13,6 @@ export interface iParentArea {
   list: Array<iParentAreaListItem>;
 }
 
-
 const initialState: iParentArea = {
   id: 0,
   name: '',
