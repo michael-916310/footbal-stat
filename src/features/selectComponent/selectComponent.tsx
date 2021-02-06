@@ -50,6 +50,7 @@ export default function SelectComponent(props: any){
     filterListToSelect('');
     setViewValue('');
     setIsListOpen(false);
+    focusToInput();
   }
 
   function setParentArea(id: number, name: string){
@@ -73,6 +74,12 @@ export default function SelectComponent(props: any){
       if (el) {
         el.scrollIntoView(false);
       }
+    }
+  }
+
+  function focusToInput() {
+    if (input_ref.current) {
+      input_ref.current.focus();
     }
   }
 
