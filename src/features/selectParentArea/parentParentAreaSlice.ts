@@ -14,7 +14,7 @@ export interface iParentArea {
 }
 
 const initialState: iParentArea = {
-  id: 0,
+  id: -1,
   name: '',
   list:[],
 }
@@ -53,13 +53,8 @@ export const parentAreaFetched = (data: any) => (dispatch: tAppDispatch) => {
   dispatch(setFullAreaList(list));
 };
 
-
-export const getfullListToSelect = (state: tRootState) => {
-  return [...state.parentArea.list];
-};
-
 export const getSelectedArea = (state: tRootState) => {
-  return {...state.parentArea}
+  return state.parentArea;
 }
 
 export const { onSelectArea } = parentAreaSlice.actions;

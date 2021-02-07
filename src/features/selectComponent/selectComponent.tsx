@@ -13,8 +13,10 @@ export default function SelectComponent(props: any){
   let fullListToSelect = props.fullListToSelect;
   let placeholder = props.placeholder;
   let onSelectAreaAction = props.onSelectAreaAction;
+  let needResetViewValue = props.needResetViewValue;
+  let onResetViewValueAction = props.onResetViewValueAction;
 
-  let [viewValue, setViewValue] = useState('');
+  let [viewValue, setViewValue] = useState(selectedName);
   let [isListOpen, setIsListOpen] = useState(false);
   let [listToSelect, setListToSelect] = useState([]);
   let [listKeyboardPosition, setListKeyboardPosition] = useState(0);
@@ -37,7 +39,7 @@ export default function SelectComponent(props: any){
     filterListToSelect(v);
     setIsListOpen(true);
 
-    dispatch(onSelectAreaAction({ id:0, name:'' }));
+    dispatch(onSelectAreaAction({ id:-1, name:'' }));
   }
 
   function handleOpenClick(){
@@ -46,14 +48,14 @@ export default function SelectComponent(props: any){
   }
 
   function handleClearClick(){
-    dispatch(onSelectAreaAction({ id:0, name:'' }));
+    dispatch(onSelectAreaAction({ id:-1, name:'' }));
     filterListToSelect('');
     setViewValue('');
     setIsListOpen(false);
     focusToInput();
   }
 
-  function setParentArea(id: number, name: string){
+  function setArea(id: number, name: string){
     dispatch(onSelectAreaAction({ id, name }));
     setViewValue(name);
     setIsListOpen(false);
@@ -61,10 +63,10 @@ export default function SelectComponent(props: any){
 
   function handleSelectValue(id?: number, name?: string){
     if (id && name) {
-      setParentArea(id, name);
+      setArea(id, name);
     } else if (listKeyboardPosition >=0 && listKeyboardPosition <= (listToSelect.length-1)) {
       const el: any = listToSelect[listKeyboardPosition];
-      setParentArea(el.id, el.name);
+      setArea(el.id, el.name);
     }
   }
 
@@ -128,12 +130,21 @@ export default function SelectComponent(props: any){
   }
 
   let classLineList = "select-component__line";
-  if (selectedId === 0) {
+  if (selectedId === -1) {
     classLineList = classLineList + ' select-component__line-warning'
   }
 
   const input_ref:React.RefObject<HTMLInputElement> = React.createRef();
   const list_ref:React.RefObject<HTMLInputElement> = React.createRef();
+
+  if (needResetViewValue) {
+    if (viewValue) {
+      setViewValue('');
+    }
+    dispatch(onResetViewValueAction());
+  }
+
+  //console.log('SelectComponent render', `selectedId:${selectedId}` ,`selectedName:"${selectedName}"`, `viewValue:"${viewValue}"`, `needResetViewValue:"${needResetViewValue}"`);
 
   return (
     <section>

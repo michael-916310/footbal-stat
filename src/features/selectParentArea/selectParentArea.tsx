@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import {parentAreaFetched, getSelectedArea} from './parentParentAreaSlice';
 import {fetchGameArea} from '../../app/api';
-import {getfullListToSelect, onSelectArea as onSelectAreaAction} from './parentParentAreaSlice';
+import {onSelectArea as onSelectAreaAction} from './parentParentAreaSlice';
 
 import SelectComponent from '../selectComponent/selectComponent';
 
@@ -14,9 +14,7 @@ export default function SelectParentArea(props: any){
   const dispatch = useDispatch();
 
   // Возьмем что нужно из стейта редакса
-  const {id, name} = useSelector(getSelectedArea);
-  const fullParentArealist = useSelector(getfullListToSelect);
-
+  const {id, name, list:fullParentArealist } = useSelector(getSelectedArea);
   /* ------------------------------------------
   загрузим при монтировании список регионов
   ------------------------------------------ */
@@ -35,6 +33,7 @@ export default function SelectParentArea(props: any){
       fullListToSelect={fullParentArealist}
       onSelectAreaAction = {onSelectAreaAction}
       placeholder = {"select parent area"}
+      resetViewValue = {false}
     />
   )
 }
