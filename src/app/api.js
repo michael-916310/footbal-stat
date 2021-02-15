@@ -16,10 +16,11 @@ export function fetchURL(URL, fnCallback, cacheKey=''){
   })
 }
 
-export function fetchGameArea(fnCallback){
-  if (cache.has('areas')) {
-    fnCallback(cache.get('areas'));
+
+export function fetchData(url, fnCallback, cacheKey){
+  if (cache.has(cacheKey)) {
+    fnCallback(cache.get(cacheKey));
   } else {
-    return fetchURL('https://api.football-data.org/v2/areas', fnCallback, 'areas');
+    return fetchURL(url, fnCallback, cacheKey);
   }
 }

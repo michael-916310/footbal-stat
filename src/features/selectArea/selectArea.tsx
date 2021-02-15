@@ -12,7 +12,7 @@ import {getSelectedArea} from './selectAreaSlice';
 import {getSelectedArea as getSelectedParentArea} from '../selectParentArea/parentParentAreaSlice';
 
 import SelectComponent from '../selectComponent/selectComponent';
-import {fetchGameArea} from '../../app/api';
+import { fetchData } from '../../app/api';
 
 export default function SelectArea(props: any){
 
@@ -25,9 +25,13 @@ export default function SelectArea(props: any){
     // сбросим текущее значение
     dispatch(onResetAreaAction());
     // выберем данные из апи
-    fetchGameArea((data: any)=>{
-      dispatch(onAreaFetchedAction(data, parentId));
-    });
+    fetchData(
+      'https://api.football-data.org/v2/areas',
+      (data: any)=>{
+        dispatch(onAreaFetchedAction(data, parentId));
+      },
+      'areas'
+    );
   }, [parentId]);
 
 

@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import {parentAreaFetched, getSelectedArea} from './parentParentAreaSlice';
-import {fetchGameArea} from '../../app/api';
+import {fetchData} from '../../app/api';
 import {onSelectArea as onSelectAreaAction} from './parentParentAreaSlice';
 
 import SelectComponent from '../selectComponent/selectComponent';
@@ -20,9 +20,13 @@ export default function SelectParentArea(props: any){
   ------------------------------------------ */
   useEffect(() => {
     // выберем данные из апи
-    fetchGameArea((data: any)=>{
-      dispatch(parentAreaFetched(data));
-    });
+    fetchData(
+      'https://api.football-data.org/v2/areas',
+      (data: any)=>{
+        dispatch(parentAreaFetched(data));
+      },
+      'areas'
+    );
   }, []);
 
 
