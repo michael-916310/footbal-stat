@@ -67,14 +67,16 @@ export const onYearFetched = (data: any) => (dispatch: tAppDispatch) => {
           name: '' + el,
         }
       })));
+      return;
     }
   }
+  dispatch(setYearFullList([]));
 }
 
 export const getSelectedYear = (state: tRootState) =>{
   return state.year;
 }
 
-export const { onSelectYear } = yearSlice.actions;
+export const { onSelectYear, onResetYear, onResetViewValue} = yearSlice.actions;
 
 export default yearSlice.reducer;
