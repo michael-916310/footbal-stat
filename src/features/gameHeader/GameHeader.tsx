@@ -13,7 +13,7 @@ export default function GameHeader(){
     <section className="game-header-container">
       <SelectParentArea/>
       <SelectArea/>
-      {/* <SelectYear/> */}
+      <SelectYear/>
     </section>
   )
 }

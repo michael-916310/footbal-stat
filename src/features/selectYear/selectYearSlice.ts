@@ -39,11 +39,42 @@ const yearSlice = createSlice({
 const {setYearFullList} = yearSlice.actions;
 
 export const onYearFetched = (data: any) => (dispatch: tAppDispatch) => {
-  dispatch(setYearFullList(data));
+  if (data.selectedArea) {
+    const name = data.selectedArea.areaName;
+    if (name) {
+      const compArr = data.competitions.filter((item: any)=>{
+        return (item.area.name === name);
+      });
+      console.log(compArr);
+
+      const yearsArr: any[]=[];
+      compArr.forEach((item: any) => {
+        let start = new Date(item.currentSeason.startDate).getFullYear();
+        const end = new Date(item.currentSeason.endDate).getFullYear();
+        while (start<=end) {
+          if (!yearsArr.includes(start)) {
+            yearsArr.push(start);
+          }
+          start ++;
+        }
+      });
+
+      yearsArr.sort((a,b) => a-b);
+
+      dispatch(setYearFullList(yearsArr.map((el)=> {
+        return {
+          id: el,
+          name: '' + el,
+        }
+      })));
+    }
+  }
 }
 
 export const getSelectedYear = (state: tRootState) =>{
   return state.year;
 }
+
+export const { onSelectYear } = yearSlice.actions;
 
 export default yearSlice.reducer;
